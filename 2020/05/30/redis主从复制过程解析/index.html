@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>孟宁</title>
+  <title>redis主从复制过程 | 孟宁</title>
   <meta name="keywords" content="">
-  <meta name="description" content="孟宁">
+  <meta name="description" content="redis主从复制过程 | 孟宁">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
 <meta property="og:type" content="article">
@@ -53,7 +53,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/" class="avatar_target">
     <img class="avatar" src="/img/avatar.jpg" />
@@ -174,12 +174,43 @@
         </div>
     </div>
 </aside>
-<div class="post index">
+<div class="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-redis主从复制过程解析" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#我的博客"><span class="toc-text">我的博客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#博客内容"><span class="toc-text">博客内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#孟宁"><span class="toc-text">孟宁</span></a></li></ol></li></ol>
+        <h1 class="article-title">redis主从复制过程</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2020-05-30 18:40:49'>2020-05-30 18:39</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
     
 <style>
     .left-col .switch-btn,
@@ -192,26 +223,30 @@
     }
 </style>
 </div>
-            <h1 id="我的博客"><a href="#我的博客" class="headerlink" title="我的博客"></a>我的博客</h1><h2 id="博客内容"><a href="#博客内容" class="headerlink" title="博客内容"></a>博客内容</h2><blockquote>
-<p>记录我的生活感受、读书见闻、文摘</p>
-</blockquote>
-<blockquote>
-<p>记录我的技术思考，学习体会</p>
-</blockquote>
-<blockquote>
-<p>摘抄面经、有深度的文章</p>
-</blockquote>
-<p>总而言之，发散自己的思考、整理自己的所见所感，如此而已。</p>
-<h2 id="孟宁"><a href="#孟宁" class="headerlink" title="孟宁"></a>孟宁</h2><p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lzpvit@163.com </span>
+    </div>
+</article>
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -220,11 +255,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>
