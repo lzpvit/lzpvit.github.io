@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Hello World | 孟宁</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Hello World | 孟宁">
+  <title>快速幂计算，时间复杂度O(logN)的幂次运算 | 孟宁</title>
+  <meta name="keywords" content=" 数学 ">
+  <meta name="description" content="快速幂计算，时间复杂度O(logN)的幂次运算 | 孟宁">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
 <meta property="og:type" content="website">
@@ -208,19 +208,33 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-快速幂" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Hello World</h1>
+        <h1 class="article-title">快速幂计算，时间复杂度O(logN)的幂次运算</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            <a  data-rel="数学">数学</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">数学</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-05-22 20:37:53'>2020-06-04 14:43</time>
+            发布时间 : <time class="date" title='最后更新: 2020-06-04 20:20:19'>2020-05-30 21:46</time>
         
     </div>
     <div class="article-meta">
@@ -242,7 +256,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#实现-pow-x-n-，即计算-x-的-n-次幂函数。"><span class="toc-text">实现 pow(x, n) ，即计算 x 的 n 次幂函数。</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#通常写法"><span class="toc-text">通常写法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#快速幂"><span class="toc-text">快速幂</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#NO-BB-SHOW-CODE"><span class="toc-text">NO BB ,SHOW CODE</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -258,19 +272,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h4 id="实现-pow-x-n-，即计算-x-的-n-次幂函数。"><a href="#实现-pow-x-n-，即计算-x-的-n-次幂函数。" class="headerlink" title="实现 pow(x, n) ，即计算 x 的 n 次幂函数。"></a>实现 pow(x, n) ，即计算 x 的 n 次幂函数。</h4><h5 id="通常写法"><a href="#通常写法" class="headerlink" title="通常写法"></a>通常写法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public double powOri(double x, int n) &#123;</span><br><span class="line">    if (n &lt; 0) &#123;</span><br><span class="line">        return 1 &#x2F; myPow2(x, 0 - n);</span><br><span class="line">    &#125;</span><br><span class="line">    if (n &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    double result &#x3D; 1.0;</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n; i++) &#123;</span><br><span class="line">        result *&#x3D; x;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种写法的时间复杂度是O(n) 进行了n次x的累积</p>
+<h5 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h5><blockquote>
+<p>什么是快速幂？</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">eg: </span><br><span class="line"></span><br><span class="line">我们计算x的n次幂，假设x&#x3D;2,n&#x3D;10。</span><br><span class="line">通常我们的写法是total&#x3D; 2*2*.....*2*2</span><br><span class="line">如果我们换个写法 toatal&#x3D;(2*2)*(2*2)....(2*2)</span><br><span class="line">就将原来需要计算十次的积运算，变成了 4的五次幂</span><br><span class="line">由此：2^10&#x3D;4^5&#x3D;4*16^2......</span><br><span class="line">通过这种思想，是不是大大的降低了我们累积的次数呢？</span><br><span class="line">这就是快速幂（时间复杂度O(logN)）</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h5 id="NO-BB-SHOW-CODE"><a href="#NO-BB-SHOW-CODE" class="headerlink" title="NO BB ,SHOW CODE"></a>NO BB ,SHOW CODE</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">基于递归的实现</span><br><span class="line">     public static double myPow2(double x, int n) &#123;</span><br><span class="line">        if (n &lt; 0) &#123;</span><br><span class="line">            return 1 &#x2F; myPow2(x, 0 - n);</span><br><span class="line">        &#125;</span><br><span class="line">        if (n &#x3D;&#x3D; 0) &#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if (n &#x3D;&#x3D; 1) &#123;</span><br><span class="line">            return x;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if (n % 2 !&#x3D; 0) &#123;</span><br><span class="line">                n &#x3D; n - 1;</span><br><span class="line">                n &#x3D; n &#x2F; 2;</span><br><span class="line">                return myPow2(x * x, n) * x;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                n &#x3D; n &#x2F; 2;</span><br><span class="line">                return myPow2(x * x, n);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">基于循环的实现</span><br><span class="line">    public static double myPow(double x, int n) &#123;</span><br><span class="line">        double res &#x3D; 1.0;</span><br><span class="line">        for (int i &#x3D; n; i !&#x3D; 0; i &#x2F;&#x3D; 2) &#123;</span><br><span class="line">            if (i % 2 !&#x3D; 0) &#123;</span><br><span class="line">                res *&#x3D; x;</span><br><span class="line">            &#125;</span><br><span class="line">            x *&#x3D; x;</span><br><span class="line">        &#125;</span><br><span class="line">        return n &lt; 0 ? 1 &#x2F; res : res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 lzpvit@163.com </span>
